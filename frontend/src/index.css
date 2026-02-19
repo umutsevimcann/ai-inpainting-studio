@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Satoshi:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #050505;
+  --surface: #111111;
+  --surface-hover: #1a1a1a;
+  --border-color: #222222;
+  --text-primary: #ededed;
+  --text-secondary: #888888;
+  --accent: #e2ff46;
+  /* High-visibility neon yellow/green for actions */
+  --accent-hover: #cced29;
+  --danger: #ff4a4a;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: 'Satoshi', sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-display {
+  font-family: 'Clash Display', sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Custom Scrollbar for a premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Animations */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseBorder {
+  0% {
+    border-color: var(--border-color);
+  }
+
+  50% {
+    border-color: var(--text-secondary);
+  }
+
+  100% {
+    border-color: var(--border-color);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Base utility classes for the new design */
+@layer components {
+  .btn-primary {
+    @apply bg-[var(--accent)] text-black font-medium px-6 py-2.5 rounded-none flex items-center justify-center gap-2 hover:bg-[var(--accent-hover)] transition-all active:scale-95 duration-200 border border-[var(--accent)];
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-[var(--text-primary)] font-medium px-6 py-2.5 rounded-none border border-[var(--border-color)] hover:border-[var(--text-secondary)] hover:bg-[var(--surface)] transition-all active:scale-95 duration-200;
+  }
+
+  .icon-btn {
+    @apply w-10 h-10 flex items-center justify-center border transition-all;
+  }
+
+  .glass-panel {
+    @apply bg-black/40 backdrop-blur-xl border border-white/5 shadow-2xl;
+  }
+}
